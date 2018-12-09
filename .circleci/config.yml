@@ -1,0 +1,19 @@
+version: 2
+jobs:
+  build:
+    working_directory: /usr/src/app
+    docker:
+      - image: circleci/node:10.14.1-browsers
+    steps:
+      # Checkout repository
+      - checkout
+
+      # Install dependencies
+      - run:
+          name: Install Dependencies
+          command: npm ci
+
+      # Test
+      - run:
+          name: Tests
+          command: npm test
